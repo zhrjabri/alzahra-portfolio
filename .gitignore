@@ -6,14 +6,5 @@ out
 .DS_Store
 *.log
 
-# Python backend
-__pycache__/
-*.pyc
-backend/.venv/
-backend/.env
-
-# Contact-form CSV log (contains visitors' emails and messages)
-backend/logs/
-
 # Build info
 tsconfig.tsbuildinfo

@@ -75,25 +75,7 @@ visitor's own mail app with the address filled in.
 
 Both are defined at the top of `components/Contact.tsx`.
 
-### The `backend/` folder
-
-`backend/` holds a working Flask + SMTP service written for an earlier version
-of this site that did have a form. **Nothing on the live site calls it** — it is
-kept as a standalone piece of work, and it still runs on its own:
-
-```bash
-cd backend
-python -m venv .venv
-.venv\Scripts\activate        # Windows  (macOS/Linux: source .venv/bin/activate)
-pip install -r requirements.txt
-python app.py                   # http://127.0.0.1:5000
-```
-
-It needs `backend/.env` (copy `backend/.env.example`) with a Gmail App Password
-in `SMTP_PASSWORD`. `python test_email.py` sends one real test email, and
-<http://127.0.0.1:5000/api/health> reports whether the SMTP settings loaded.
-
-Delete the folder if you would rather not keep it.
+This site is frontend-only — there is no server to run or deploy.
 
 ## Files & components created
 
