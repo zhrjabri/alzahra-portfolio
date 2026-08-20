@@ -57,74 +57,43 @@ Everything is plain text/data inside the components — no CMS needed.
 1. Push this project to a GitHub repository.
 2. Go to [vercel.com](https://vercel.com), sign in with GitHub, and click "New Project."
 3. Select your repo — Vercel auto-detects Next.js and deploys it. You'll get a live URL in a couple of minutes.
-4. Update `siteUrl` in `app/layout.tsx` to your real deployed domain once you have it (used for SEO/Open Graph metadata).
+4. Once you have a custom domain, set `NEXT_PUBLIC_SITE_URL` in the host's
+   environment variables. `app/site.ts` falls back to the Vercel URL, and
+   metadata, `robots.txt` and `sitemap.xml` all follow from it.
 
 Other options: Netlify, Cloudflare Pages, or any Node-compatible host.
 
-## 6. The contact form (Python + SMTP backend)
+## 6. Contact details (no form)
 
-The form is wired to a small Python backend in `backend/`:
+The contact section links straight to email and LinkedIn — there is no form to
+submit. A form needs a server running somewhere to turn a submission into an
+email; a plain `mailto:` link needs nothing, cannot silently fail, and opens the
+visitor's own mail app with the address filled in.
 
-```
-Contact form (components/Contact.tsx)
-   → POST /api/contact  (Flask, backend/app.py)
-      → validation      (backend/validation.py)
-      → smtplib + EmailMessage over SMTP  (backend/email_service.py)
-         → aljabrialzahra1@gmail.com
-```
+- Email: aljabrialzahra1@gmail.com
+- LinkedIn: linkedin.com/in/alzahra-al-jabri-0164ab416
 
-### One-time setup
+Both are defined at the top of `components/Contact.tsx`.
 
-Mail is **sent from** `zhrjabri47@gmail.com` and **delivered to**
-`aljabrialzahra1@gmail.com`. Using a separate sending account keeps the App
-Password out of your main inbox account.
+### The `backend/` folder
 
-1. **Create a Gmail App Password** on the *sending* account (a normal Gmail
-   password will not work):
-   - Turn on 2-Step Verification: <https://myaccount.google.com/signinoptions/two-step-verification>
-   - Then open <https://myaccount.google.com/apppasswords>
-   - Name it e.g. `Portfolio contact form` → **Create** → copy the 16-character code.
-
-2. **Create `backend/.env`** (copy `backend/.env.example`) and paste the App Password
-   into `SMTP_PASSWORD` (remove the spaces). `.env` is git-ignored — never commit it.
-
-3. **Install the Python packages:**
-   ```bash
-   cd backend
-   python -m venv .venv
-   .venv\Scripts\activate        # Windows  (macOS/Linux: source .venv/bin/activate)
-   pip install -r requirements.txt
-   ```
-
-### Running it
-
-Two terminals:
+`backend/` holds a working Flask + SMTP service written for an earlier version
+of this site that did have a form. **Nothing on the live site calls it** — it is
+kept as a standalone piece of work, and it still runs on its own:
 
 ```bash
-# Terminal 1 — Python backend (http://127.0.0.1:5000)
 cd backend
-.venv\Scripts\activate
-python app.py
+python -m venv .venv
+.venv\Scripts\activate        # Windows  (macOS/Linux: source .venv/bin/activate)
+pip install -r requirements.txt
+python app.py                   # http://127.0.0.1:5000
 ```
 
-```bash
-# Terminal 2 — website (http://localhost:3000)
-npm run dev
-```
+It needs `backend/.env` (copy `backend/.env.example`) with a Gmail App Password
+in `SMTP_PASSWORD`. `python test_email.py` sends one real test email, and
+<http://127.0.0.1:5000/api/health> reports whether the SMTP settings loaded.
 
-### Checking it works
-
-- `python test_email.py` (in `backend/`, venv active) sends one real test email.
-- <http://127.0.0.1:5000/api/health> shows whether the SMTP settings loaded.
-- Submit the form at <http://localhost:3000/#contact> — it should show
-  "Message sent successfully!" and the mail lands in the inbox.
-
-### Deploying
-
-The backend has to run somewhere too (Render, Railway, Fly.io, PythonAnywhere).
-Set the same variables there as environment variables, then set
-`NEXT_PUBLIC_API_URL=https://your-backend-url` in the frontend host's env vars and
-add your site's domain to `ALLOWED_ORIGINS` on the backend.
+Delete the folder if you would rather not keep it.
 
 ## Files & components created
 
