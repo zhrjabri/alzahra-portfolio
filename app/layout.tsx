@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { siteUrl } from "./site";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -22,8 +23,6 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   display: "swap",
 });
-
-const siteUrl = "https://alzahra-aljabri.dev"; // TODO: replace with your real deployed URL
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
