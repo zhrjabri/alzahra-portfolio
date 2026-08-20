@@ -76,7 +76,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="md:hidden border-t border-line bg-ink/95 backdrop-blur-md">
+        <div className="md:hidden border-t border-line bg-ink">
           <ul className="flex flex-col px-6 py-4">
             {LINKS.map((l) => (
               <li key={l.href}>
