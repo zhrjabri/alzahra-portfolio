@@ -14,3 +14,6 @@ backend/.env
 
 # Contact-form CSV log (contains visitors' emails and messages)
 backend/logs/
+
+# Build info
+tsconfig.tsbuildinfo
