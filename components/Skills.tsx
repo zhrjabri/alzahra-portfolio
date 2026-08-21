@@ -57,8 +57,8 @@ export default function Skills() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {CATEGORIES.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 70}>
-              <div className="group h-full rounded-2xl border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold/40 hover:bg-surface-2">
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-line text-lg text-gold transition-colors group-hover:border-gold/50">
+              <div className="group h-full rounded-2xl border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface-2">
+                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-line text-lg text-accent transition-colors group-hover:border-accent/50">
                   {cat.icon}
                 </div>
                 <h3 className="font-display text-lg font-medium text-text">

@@ -47,12 +47,21 @@ export const metadata: Metadata = {
     siteName: "Alzahra Al Jabri Portfolio",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Alzahra Ali Nasser Al Jabri — AI Graduate & AI/Software Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Alzahra Al Jabri | AI Graduate & AI/Software Developer",
     description:
       "AI-powered application development, Python, and API-driven software — portfolio and featured projects.",
+    images: ["/og.png"],
   },
   icons: {
     icon: "/favicon.svg",

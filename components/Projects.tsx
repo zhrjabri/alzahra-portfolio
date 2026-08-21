@@ -34,11 +34,11 @@ export default function Projects() {
 
         {/* Featured project */}
         <Reveal delay={100} className="mt-14">
-          <div className="overflow-hidden rounded-2xl border border-gold/25 bg-surface">
+          <div className="overflow-hidden rounded-2xl border border-accent/25 bg-surface">
             <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="rounded-full border border-gold/40 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-wider text-gold">
+                  <span className="rounded-full border border-accent/40 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-wider text-accent">
                     Graduation Project · 2026
                   </span>
                 </div>
@@ -67,7 +67,7 @@ export default function Projects() {
                   onClick={() => setOpen((v) => !v)}
                   aria-expanded={open}
                   aria-controls="case-study"
-                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
                 >
                   {open ? "Hide Case Study" : "View Case Study"}
                   <span className={`transition-transform ${open ? "rotate-180" : ""}`}>↓</span>
@@ -189,7 +189,7 @@ export default function Projects() {
                   <p className="font-mono text-[0.65rem] uppercase tracking-wider text-text-faint">
                     Copyright Reg. No.
                   </p>
-                  <p className="mt-1 font-mono text-sm text-gold">CPRG0003420354</p>
+                  <p className="mt-1 font-mono text-sm text-accent">CPRG0003420354</p>
                   <p className="mt-2 text-xs text-text-faint">
                     Ministry of Commerce and Industry, Oman
                   </p>

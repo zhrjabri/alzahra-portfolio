@@ -10,15 +10,15 @@ export default function Hero() {
           width="620"
           height="620"
           viewBox="0 0 100 100"
-          className="animate-sweep opacity-[0.30]"
+          className="animate-sweep opacity-[0.55]"
         >
-          <circle cx="50" cy="50" r="46" fill="none" stroke="#9A6B12" strokeWidth="0.4" strokeDasharray="1 3" />
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#1B3A6B" strokeWidth="0.4" strokeDasharray="1 3" />
         </svg>
         <svg
           width="620"
           height="620"
           viewBox="0 0 100 100"
-          className="absolute inset-0 opacity-[0.35]"
+          className="absolute inset-0 opacity-[0.50]"
         >
           <circle cx="50" cy="50" r="34" fill="none" stroke="#157F77" strokeWidth="0.3" strokeDasharray="0.5 2.5" />
         </svg>
@@ -45,7 +45,7 @@ export default function Hero() {
           className="animate-fade-up mt-6 max-w-xl text-lg text-text-muted opacity-0 sm:text-xl"
           style={{ animationDelay: "260ms" }}
         >
-          <span className="text-gold">Artificial Intelligence Graduate</span>{" "}
+          <span className="text-accent">Artificial Intelligence Graduate</span>{" "}
           &middot; AI &amp; Software Developer
         </p>
 
@@ -63,13 +63,13 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="rounded-full bg-gold px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(227,179,65,0.35)]"
+            className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(27,58,107,0.30)]"
           >
             View My Projects
           </a>
           <a
             href="#contact"
-            className="rounded-full border border-line px-6 py-3 text-sm font-medium text-text transition-colors hover:border-gold/50 hover:text-gold"
+            className="rounded-full border border-line px-6 py-3 text-sm font-medium text-text transition-colors hover:border-accent/50 hover:text-accent"
           >
             Contact Me
           </a>
