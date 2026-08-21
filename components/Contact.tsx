@@ -41,7 +41,7 @@ export default function Contact() {
                       href={d.href}
                       target={d.href.startsWith("http") ? "_blank" : undefined}
                       rel="noopener noreferrer"
-                      className="mt-1.5 block text-base text-text hover:text-gold transition-colors"
+                      className="mt-1.5 block text-base text-text hover:text-accent transition-colors"
                     >
                       {d.value}
                     </a>
@@ -66,7 +66,7 @@ export default function Contact() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="rounded-full bg-gold px-7 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
+                  className="rounded-full bg-accent px-7 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
                 >
                   Email me
                 </a>
@@ -74,7 +74,7 @@ export default function Contact() {
                   href={LINKEDIN}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full border border-line px-7 py-3 text-sm font-medium text-text transition-colors hover:border-gold/50 hover:text-gold"
+                  className="rounded-full border border-line px-7 py-3 text-sm font-medium text-text transition-colors hover:border-accent/50 hover:text-accent"
                 >
                   Connect on LinkedIn
                 </a>

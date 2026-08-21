@@ -1,7 +1,9 @@
+<!-- Lettermark for tab/app icons. The AZ mark in public/logo.svg is the logo;
+     two letters turn to mush at 16px, so the "A" carries it at icon sizes. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="20" fill="#F7F5F0"/>
-  <circle cx="50" cy="50" r="34" fill="none" stroke="#E0DAD0" stroke-width="8"/>
-  <circle cx="50" cy="50" r="34" fill="none" stroke="#9A6B12" stroke-width="8"
-    stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="65"
-    transform="rotate(-90 50 50)"/>
+  <rect width="100" height="100" rx="20" fill="#1B3A6B"/>
+  <g fill="none" stroke="#F7F5F0" stroke-width="9.5" stroke-linejoin="miter">
+    <path d="M26 78 L50 22 L74 78"/>
+    <path d="M39.7 54 H60.3"/>
+  </g>
 </svg>

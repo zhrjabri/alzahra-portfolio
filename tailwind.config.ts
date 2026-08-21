@@ -17,9 +17,9 @@ const config: Config = {
           muted: "#556170",
           faint: "#8A94A2",
         },
-        gold: {
-          DEFAULT: "#9A6B12",
-          dim: "#7C560E",
+        accent: {
+          DEFAULT: "#1B3A6B",
+          dim: "#142C52",
         },
         teal: "#157F77",
       },
@@ -30,7 +30,7 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-fade":
-          "linear-gradient(to bottom, rgba(154,107,18,0.08), transparent 60%)",
+          "linear-gradient(to bottom, rgba(27,58,107,0.045), transparent 60%)",
       },
       keyframes: {
         "sweep": {
@@ -44,10 +44,6 @@ const config: Config = {
         "pulse-slow": {
           "0%, 100%": { opacity: "0.5" },
           "50%": { opacity: "1" },
-        },
-        "count-in": {
-          "0%": { strokeDashoffset: "100" },
-          "100%": { strokeDashoffset: "var(--offset)" },
         },
       },
       animation: {
