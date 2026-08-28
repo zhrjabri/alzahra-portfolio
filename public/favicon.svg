@@ -1,9 +1,10 @@
-<!-- Lettermark for tab/app icons. The AZ mark in public/logo.svg is the logo;
-     two letters turn to mush at 16px, so the "A" carries it at icon sizes. -->
+<!-- Lettermark for tab/app icons. The interlocked AZ cipher in public/logo.svg is
+     the logo; the interlock closes up and turns to mush at 16px, so the "A" alone
+     carries it at icon sizes — drawn monoline in the cipher's proportions. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <rect width="100" height="100" rx="20" fill="#1B3A6B"/>
-  <g fill="none" stroke="#F7F5F0" stroke-width="9.5" stroke-linejoin="miter">
-    <path d="M26 78 L50 22 L74 78"/>
-    <path d="M39.7 54 H60.3"/>
+  <g fill="none" stroke="#F7F5F0" stroke-width="9.5" stroke-linejoin="miter" stroke-miterlimit="8">
+    <path d="M23 82 L50 24 L77 82"/>
+    <path d="M34.5 60 H65.5"/>
   </g>
 </svg>
