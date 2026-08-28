@@ -33,15 +33,6 @@ const CATEGORIES = [
   },
 ];
 
-const STRENGTHS = [
-  "Analytical thinking",
-  "Continuous learning",
-  "Innovative & solution-oriented",
-  "Leadership",
-  "Teamwork",
-  "Attention to detail",
-  "Works well under pressure",
-];
 
 export default function Skills() {
   return (
@@ -79,20 +70,6 @@ export default function Skills() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={150} className="mt-14">
-          <p className="eyebrow mb-5">Personal strengths</p>
-          <div className="flex flex-wrap gap-3">
-            {STRENGTHS.map((s) => (
-              <span
-                key={s}
-                className="rounded-full border border-line px-4 py-2 text-sm text-text-muted transition-colors hover:border-teal/40 hover:text-teal"
-              >
-                {s}
-              </span>
-            ))}
-          </div>
-        </Reveal>
       </div>
     </section>
   );
