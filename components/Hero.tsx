@@ -4,23 +4,23 @@ export default function Hero() {
       id="top"
       className="relative flex min-h-screen items-center overflow-hidden pt-24"
     >
-      {/* ambient background: large slow-sweeping credibility arc */}
-      <div className="pointer-events-none absolute right-[-10%] top-1/2 hidden -translate-y-1/2 md:block lg:right-[2%]">
+      {/* ambient background: the AZ cipher blown up and cropped by the right edge */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute right-[-22%] top-1/2 hidden -translate-y-1/2 md:block lg:right-[-16%]"
+      >
         <svg
-          width="620"
-          height="620"
-          viewBox="0 0 100 100"
-          className="animate-sweep opacity-[0.55]"
+          viewBox="0 0 200 120"
+          className="w-[760px] opacity-[0.11] lg:w-[980px]"
+          fill="none"
+          stroke="#1B3A6B"
+          strokeWidth="1.2"
+          strokeLinejoin="miter"
+          strokeMiterlimit={8}
         >
-          <circle cx="50" cy="50" r="46" fill="none" stroke="#1B3A6B" strokeWidth="0.4" strokeDasharray="1 3" />
-        </svg>
-        <svg
-          width="620"
-          height="620"
-          viewBox="0 0 100 100"
-          className="absolute inset-0 opacity-[0.50]"
-        >
-          <circle cx="50" cy="50" r="34" fill="none" stroke="#157F77" strokeWidth="0.3" strokeDasharray="0.5 2.5" />
+          <path d="M25 102 L67 18 L109 102" />
+          <path d="M43 70 H91" />
+          <path d="M77 18 H159 L95 102 H177" />
         </svg>
       </div>
 
