@@ -35,17 +35,17 @@ export default function Projects() {
         {/* Featured project */}
         <Reveal delay={100} className="mt-14">
           <div className="overflow-hidden rounded-2xl border border-accent/25 bg-surface">
-            <div className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[1.4fr_1fr] lg:gap-12">
+            <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.4fr_1fr] lg:gap-12 lg:p-10">
               <div>
                 <div className="flex items-center gap-3">
-                  <span className="rounded-full border border-accent/40 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-wider text-accent">
+                  <span className="rounded-2xl border border-accent/40 px-3 py-1.5 font-mono text-[0.72rem] uppercase tracking-[0.11em] text-accent">
                     Graduation Project · 2026
                   </span>
                 </div>
                 <h3 className="mt-5 font-display text-2xl font-semibold sm:text-3xl">
                   AI-Powered Fake News Detection Platform
                 </h3>
-                <p className="mt-4 text-base leading-relaxed text-text-muted">
+                <p className="mt-5 max-w-[58ch] text-base text-text-muted">
                   A full-stack AI-powered web application for analysing
                   Arabic and English news and evaluating credibility on a
                   0–100 scale — cross-referencing content against trusted
@@ -56,7 +56,7 @@ export default function Projects() {
                   {TECH.map((t) => (
                     <span
                       key={t}
-                      className="rounded-md border border-line bg-surface-2 px-3 py-1 font-mono text-xs text-text-muted"
+                      className="rounded-md border border-line bg-surface-2 px-2.5 py-1.5 font-mono text-[0.75rem] text-text-muted"
                     >
                       {t}
                     </span>
@@ -67,10 +67,15 @@ export default function Projects() {
                   onClick={() => setOpen((v) => !v)}
                   aria-expanded={open}
                   aria-controls="case-study"
-                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03]"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full border border-accent/35 px-6 py-3 text-sm font-medium text-accent transition-colors duration-200 hover:border-accent/70 hover:bg-accent/5"
                 >
                   {open ? "Hide Case Study" : "View Case Study"}
-                  <span className={`transition-transform ${open ? "rotate-180" : ""}`}>↓</span>
+                  <span
+                    aria-hidden="true"
+                    className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+                  >
+                    ↓
+                  </span>
                 </button>
               </div>
 
@@ -80,7 +85,7 @@ export default function Projects() {
                     <span className="h-2 w-2 rounded-full bg-line" />
                     <span className="h-2 w-2 rounded-full bg-line" />
                     <span className="h-2 w-2 rounded-full bg-line" />
-                    <span className="ml-2 font-mono text-[0.6rem] text-text-faint">
+                    <span className="ml-2 font-mono text-[0.7rem] text-text-faint">
                       Fake News Detector — Home
                     </span>
                   </div>
@@ -92,7 +97,7 @@ export default function Projects() {
                     loading="lazy"
                     className="block w-full"
                   />
-                  <figcaption className="border-t border-line px-3 py-2 font-mono text-[0.6rem] uppercase tracking-wider text-text-faint">
+                  <figcaption className="border-t border-line px-3 py-2 font-mono text-[0.7rem] uppercase tracking-[0.11em] text-text-faint">
                     Home screen
                   </figcaption>
                 </figure>
@@ -102,12 +107,12 @@ export default function Projects() {
             {/* Case study */}
             <div
               id="case-study"
-              className={`grid overflow-hidden border-t border-line transition-[grid-template-rows] duration-500 ease-out ${
-                open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              className={`grid overflow-hidden border-t border-line transition-[grid-template-rows,visibility] duration-500 ease-out ${
+                open ? "visible grid-rows-[1fr]" : "invisible grid-rows-[0fr]"
               }`}
             >
               <div className="min-h-0">
-                <div className="grid gap-10 p-8 sm:p-10 md:grid-cols-2">
+                <div className="grid gap-9 p-6 sm:p-8 md:grid-cols-2 lg:p-10">
                   <CaseBlock title="Overview">
                     A full-stack platform that evaluates the credibility of
                     Arabic and English news content, built as my AI
@@ -128,7 +133,7 @@ export default function Projects() {
                       {TECH.map((t) => (
                         <span
                           key={t}
-                          className="rounded-md border border-line px-2.5 py-1 font-mono text-xs text-text-muted"
+                          className="rounded-md border border-line px-2.5 py-1.5 font-mono text-[0.75rem] text-text-muted"
                         >
                           {t}
                         </span>
@@ -152,7 +157,7 @@ export default function Projects() {
                     dashboard.
                   </CaseBlock>
                 </div>
-                <div className="border-t border-line px-8 py-6 sm:px-10">
+                <div className="border-t border-line px-6 py-7 sm:px-8 lg:px-10">
                   <CaseBlock title="Result / Achievement">
                     Delivered as my Artificial Intelligence graduation
                     project — a working, full-stack AI application
@@ -168,16 +173,30 @@ export default function Projects() {
         {/* Nasek project */}
         <Reveal delay={150} className="mt-8">
           <div className="overflow-hidden rounded-2xl border border-line bg-surface">
-            <div className="p-8 sm:p-10">
+            <div className="p-6 sm:p-8 lg:p-10">
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <span className="rounded-full border border-teal/40 px-3 py-1 font-mono text-[0.65rem] uppercase tracking-wider text-teal">
-                    Registered Intellectual Property · 2023
-                  </span>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-2xl border border-teal/40 px-3 py-1.5 font-mono text-[0.72rem] uppercase tracking-[0.11em] text-teal">
+                      Registered Intellectual Property · 2023
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 rounded-2xl bg-teal/10 px-3 py-1.5 font-mono text-[0.72rem] uppercase tracking-[0.11em] text-teal">
+                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-teal" />
+                      Live site
+                    </span>
+                  </div>
                   <h3 className="mt-4 font-display text-2xl font-semibold">
-                    &ldquo;Nasek&rdquo; — Hajj &amp; Umrah Booking Platform
+                    <a
+                      href="https://nasek.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-text decoration-teal/40 underline-offset-[6px] transition-colors duration-200 hover:text-teal hover:underline"
+                    >
+                      &ldquo;Nasek&rdquo; — Hajj &amp; Umrah Booking Platform
+                      <span className="sr-only">(opens the live site in a new tab)</span>
+                    </a>
                   </h3>
-                  <p className="mt-4 max-w-2xl text-base leading-relaxed text-text-muted">
+                  <p className="mt-5 max-w-[58ch] text-base text-text-muted">
                     A digital platform bringing every Omani Hajj and Umrah
                     campaign into one place, connecting campaign owners with
                     travellers on a sharing-economy model. Led as Chief
@@ -185,36 +204,67 @@ export default function Projects() {
                     Property Department on 01 May 2023.
                   </p>
                 </div>
-                <div className="shrink-0 rounded-xl border border-line bg-surface-2 px-5 py-4 text-center sm:text-left">
-                  <p className="font-mono text-[0.65rem] uppercase tracking-wider text-text-faint">
+                <div className="shrink-0 rounded-xl border border-line bg-surface-2 px-5 py-4 sm:max-w-[15rem] sm:text-left">
+                  <p className="font-mono text-[0.72rem] uppercase tracking-[0.11em] text-text-faint">
                     Copyright Reg. No.
                   </p>
-                  <p className="mt-1 font-mono text-sm text-accent">CPRG0003420354</p>
-                  <p className="mt-2 text-xs text-text-faint">
+                  <p className="mt-1.5 font-mono text-sm text-accent">CPRG0003420354</p>
+                  <p className="mt-2 text-xs leading-relaxed text-text-faint">
                     Ministry of Commerce and Industry, Oman
                   </p>
                 </div>
               </div>
 
-              <button
-                onClick={() => setNasekOpen((v) => !v)}
-                aria-expanded={nasekOpen}
-                aria-controls="nasek-case-study"
-                className="mt-8 inline-flex items-center gap-2 rounded-full border border-teal/40 px-5 py-2.5 text-sm font-medium text-teal transition-colors hover:bg-teal/10"
-              >
-                {nasekOpen ? "Hide Case Study" : "View Case Study"}
-                <span className={`transition-transform ${nasekOpen ? "rotate-180" : ""}`}>↓</span>
-              </button>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a
+                  href="https://nasek.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-teal px-6 py-3 text-sm font-medium text-ink transition-colors duration-200 hover:bg-teal-dim"
+                >
+                  Visit nasek.vercel.app
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                    className="transition-transform duration-200 group-hover:-translate-y-px group-hover:translate-x-px"
+                  >
+                    <path d="M7 17 17 7M9 7h8v8" />
+                  </svg>
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+
+                <button
+                  onClick={() => setNasekOpen((v) => !v)}
+                  aria-expanded={nasekOpen}
+                  aria-controls="nasek-case-study"
+                  className="inline-flex items-center gap-2 rounded-full border border-teal/40 px-6 py-3 text-sm font-medium text-teal transition-colors duration-200 hover:border-teal/70 hover:bg-teal/5"
+                >
+                  {nasekOpen ? "Hide Case Study" : "View Case Study"}
+                  <span
+                    aria-hidden="true"
+                    className={`transition-transform duration-300 ${nasekOpen ? "rotate-180" : ""}`}
+                  >
+                    ↓
+                  </span>
+                </button>
+              </div>
             </div>
 
             <div
               id="nasek-case-study"
-              className={`grid overflow-hidden border-t border-line transition-[grid-template-rows] duration-500 ease-out ${
-                nasekOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+              className={`grid overflow-hidden border-t border-line transition-[grid-template-rows,visibility] duration-500 ease-out ${
+                nasekOpen ? "visible grid-rows-[1fr]" : "invisible grid-rows-[0fr]"
               }`}
             >
               <div className="min-h-0">
-                <div className="grid gap-10 p-8 sm:p-10 md:grid-cols-2">
+                <div className="grid gap-9 p-6 sm:p-8 md:grid-cols-2 lg:p-10">
                   <CaseBlock title="Problem">
                     Travellers had no single place to compare Omani Hajj and
                     Umrah campaigns by budget, location or departure date —
@@ -238,7 +288,7 @@ export default function Projects() {
                     a 1,000 OMR starting capital.
                   </CaseBlock>
                 </div>
-                <div className="grid grid-cols-2 gap-4 border-t border-line px-8 py-6 sm:px-10">
+                <div className="grid grid-cols-2 gap-4 border-t border-line px-6 py-7 sm:px-8 lg:px-10">
                   {NASEK_STATS.map((s) => (
                     <div key={s.label}>
                       <p className="font-display text-2xl font-semibold text-teal">{s.value}</p>

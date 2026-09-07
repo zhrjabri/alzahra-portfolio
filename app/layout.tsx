@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { Cormorant_Garamond, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { siteUrl } from "./site";
 
-const spaceGrotesk = Space_Grotesk({
+const cormorantGaramond = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-display",
   display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-body",
-  display: "swap",
+  fallback: ["serif"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -24,11 +18,16 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const description =
+  "Portfolio of Alzahra Ali Nasser Al Jabri — Artificial Intelligence graduate and AI & Software Developer from Oman, building AI-powered applications with Python, Next.js and API-driven software. Featured work includes an AI fake news detection platform and the Nasek booking platform.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Alzahra Al Jabri | AI Graduate & AI/Software Developer",
-  description:
-    "Portfolio of Alzahra Ali Nasser Al Jabri — Artificial Intelligence graduate and AI & Software Developer from Oman, specialising in AI-powered applications, Python, and API-driven software.",
+  title: "Alzahra Al Jabri Portfolio",
+  description,
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Alzahra Al Jabri",
     "AI Developer",
@@ -39,10 +38,10 @@ export const metadata: Metadata = {
     "Fake News Detection",
   ],
   authors: [{ name: "Alzahra Ali Nasser Al Jabri" }],
+  creator: "Alzahra Ali Nasser Al Jabri",
   openGraph: {
-    title: "Alzahra Al Jabri | AI Graduate & AI/Software Developer",
-    description:
-      "AI-powered application development, Python, and API-driven software — portfolio and featured projects.",
+    title: "Alzahra Al Jabri Portfolio",
+    description,
     url: siteUrl,
     siteName: "Alzahra Al Jabri Portfolio",
     locale: "en_US",
@@ -58,9 +57,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alzahra Al Jabri | AI Graduate & AI/Software Developer",
-    description:
-      "AI-powered application development, Python, and API-driven software — portfolio and featured projects.",
+    title: "Alzahra Al Jabri Portfolio",
+    description,
     images: ["/og.png"],
   },
   icons: {
@@ -74,8 +72,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-ink text-text antialiased">{children}</body>
+    <html lang="en" className={`${cormorantGaramond.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        {/* Scroll-reveal starts at opacity 0; without JS it would never come back. */}
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
+      </head>
+      <body className="bg-ink text-text antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-6 focus:top-6 focus:z-[60] focus:rounded-full focus:bg-accent focus:px-5 focus:py-3 focus:text-sm focus:font-medium focus:text-ink"
+        >
+          Skip to content
+        </a>
+        {children}
+      </body>
     </html>
   );
 }

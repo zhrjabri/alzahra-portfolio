@@ -3,13 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Space Grotesk", sans-serif;
-  --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  /* --font-display and --font-mono are set on <html> by next/font. */
+  --font-body: var(--font-display);
 }
 
-* {
+html {
   scroll-behavior: smooth;
+}
+
+/* The header is fixed, so anchor jumps must clear it or the heading lands underneath. */
+section[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -30,7 +34,24 @@ body {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: var(--font-body), serif;
+  /* Cormorant Garamond's 400 is a display weight; 500 gives body copy the
+     stem thickness it needs to hold up at reading sizes. */
+  font-weight: 500;
+  font-size: 1.0938rem;
+  line-height: 1.72;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings carry their weight through size and colour, not tight leading. */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 ::selection {
@@ -42,7 +63,8 @@ body {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
-textarea:focus-visible {
+textarea:focus-visible,
+[tabindex]:focus-visible {
   outline: 2px solid #1b3a6b;
   outline-offset: 3px;
   border-radius: 4px;
@@ -65,29 +87,39 @@ textarea:focus-visible {
 
 .eyebrow {
   font-family: var(--font-mono);
-  letter-spacing: 0.18em;
+  font-weight: 500;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #1b3a6b;
 }
 
 .section-label {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
-  color: #8a94a2;
+  color: #5f6a78;
 }
 
 /* scroll reveal */
 .reveal {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Reduced motion and no-JS both need the content present, not faded out. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .grain {

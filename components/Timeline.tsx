@@ -59,15 +59,18 @@ export default function Timeline() {
         <div className="relative mt-14 border-l border-line pl-8 sm:pl-10">
           {EVENTS.map((e, i) => (
             <Reveal key={e.title} delay={i * 60} className="relative pb-12 last:pb-0">
-              <span className="absolute -left-[41px] top-1 h-3 w-3 rounded-full border-2 border-accent bg-ink sm:-left-[45px]" />
-              <p className="font-mono text-xs uppercase tracking-wider text-accent">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[39px] top-[0.45rem] h-3 w-3 rounded-full border-2 border-accent bg-ink sm:-left-[47px]"
+              />
+              <p className="font-mono text-xs uppercase tracking-[0.12em] text-accent">
                 {e.date}
               </p>
-              <h3 className="mt-2 font-display text-lg font-medium text-text sm:text-xl">
+              <h3 className="mt-2.5 font-display text-lg font-semibold text-text sm:text-xl">
                 {e.title}
               </h3>
-              <p className="mt-1 text-sm text-text-faint">{e.place}</p>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-text-muted">
+              <p className="mt-1.5 text-sm text-text-faint">{e.place}</p>
+              <p className="mt-2.5 max-w-[62ch] text-sm text-text-muted">
                 {e.desc}
               </p>
             </Reveal>

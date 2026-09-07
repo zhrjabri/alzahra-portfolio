@@ -1,108 +1,157 @@
-# Alzahra Al Jabri — Portfolio
+# Alzahra Al Jabri Portfolio
 
-A production-ready personal portfolio built with **Next.js 14, TypeScript, and Tailwind CSS**, using only the information from your CV. The visual signature is a "credibility dial" motif (a nod to the 0–100 scoring mechanic in your fake news detection project) used in the nav mark, hero background, and the project case study.
+Personal portfolio of Alzahra Ali Nasser Al Jabri — Artificial Intelligence
+graduate and AI & Software Developer based in the Sultanate of Oman. A
+single-page site presenting her background, skills, featured projects,
+professional journey, achievements and contact details.
 
-## 1. How to run the project
+**Live site:** https://alzahra-portfolio.vercel.app/
 
-You'll need [Node.js](https://nodejs.org) 18+ installed.
+## Sections
+
+| Section | Contents |
+|---|---|
+| Hero | Name, title and the primary calls to action |
+| About | Background and the kind of work she is looking for |
+| Skills | Six categories: AI & machine learning, Python, APIs, data, application development, automation |
+| Projects | AI-Powered Fake News Detection Platform (graduation project) and "Nasek", each with an expandable case study |
+| Journey | Dated timeline from secondary education through to the AI degree |
+| Achievements | First place nationally, registered software work, degree, graduation project |
+| Contact | Email, LinkedIn and location |
+
+## Featured projects
+
+**AI-Powered Fake News Detection Platform** — graduation project. A full-stack
+application that analyses Arabic and English news content and scores its
+credibility from 0–100, cross-referencing claims against trusted sources via
+the OpenAI and Google Search APIs.
+
+**"Nasek" — Hajj & Umrah Booking Platform** — live at
+https://nasek.vercel.app/. A platform bringing Omani Hajj and Umrah campaigns
+into one place. Registered with the Intellectual Property Department,
+Ministry of Commerce and Industry, Oman (Reg. No. CPRG0003420354), and first
+place nationally in the Ibda'at competition.
+
+## Tech stack
+
+- **Next.js 14** (App Router) with React 18
+- **TypeScript**
+- **Tailwind CSS** with a custom token layer for colour and type
+- **next/font/google** — Cormorant Garamond (display and body) and JetBrains
+  Mono (labels and data)
+- Deployed on **Vercel**
+
+The site is frontend-only. There is no server, database or API to run.
+
+## Features
+
+- Fixed header with a scroll-aware treatment and an active-section indicator
+- Expandable case studies for both projects
+- Scroll-reveal transitions on each section
+- SEO metadata via the Next.js Metadata API — title, description, canonical
+  URL, Open Graph and Twitter card
+- Generated `robots.txt` and `sitemap.xml`, both driven by the same site URL
+
+### Responsive design
+
+- Laid out for phone, tablet and desktop, tested from 360px upward
+- Fluid display type via `clamp()`, so headings scale with the viewport
+  without overflowing narrow screens
+- Navigation collapses to a menu below 1024px, with body-scroll locking and
+  Escape-to-close
+- Line lengths capped in `ch` units to keep body copy readable at every width
+
+### Accessibility
+
+- All text meets WCAG AA contrast on every surface
+- Skip-to-content link and a `<main>` landmark
+- Visible keyboard focus on every interactive element
+- Collapsed case studies stay out of the tab order
+- Anchor links account for the fixed header, so headings are never hidden
+  underneath it
+- `prefers-reduced-motion` is respected; content is never left hidden
+- Touch targets sized for comfortable tapping
+
+## Running locally
+
+Requires [Node.js](https://nodejs.org) 18 or newer.
 
 ```bash
+git clone https://github.com/zhrjabri/alzahra-portfolio.git
+cd alzahra-portfolio
 npm install
 npm run dev
 ```
 
-Then open **http://localhost:3000** in your browser. The site auto-reloads as you edit files.
+Open http://localhost:3000.
 
-To build for production:
+### Commands
 
-```bash
-npm run build
-npm run start
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Start the development server with hot reload |
+| `npm run build` | Create the optimised production build |
+| `npm run start` | Serve the production build locally |
+| `npm run lint` | Run ESLint |
+| `npx tsc --noEmit` | Type-check without emitting files |
+
+### Environment
+
+One optional variable, used for canonical metadata, share previews,
+`robots.txt` and `sitemap.xml`:
+
+```
+NEXT_PUBLIC_SITE_URL=https://alzahra-portfolio.vercel.app
 ```
 
-## 2. How to edit your information
+Copy `.env.example` to `.env.local` for local development, and set the same
+key in the host's environment variables for production. `app/site.ts` falls
+back to the deployed URL when it is not set.
 
-Everything is plain text/data inside the components — no CMS needed.
-
-| Section | File |
-|---|---|
-| Name, title, hero statement | `components/Hero.tsx` |
-| About text | `components/About.tsx` |
-| Skill categories & items | `components/Skills.tsx` (`CATEGORIES`, `STRENGTHS`) |
-| Featured project + case study | `components/Projects.tsx` (`TECH`, `FEATURES`, and the JSX text) |
-| "Nasek" project details | `components/Projects.tsx` (bottom card) |
-| Timeline entries | `components/Timeline.tsx` (`EVENTS` array) |
-| Achievements | `components/Achievements.tsx` (`ACHIEVEMENTS` array) |
-| Contact details | `components/Contact.tsx` (`DETAILS` array) |
-| Page title/SEO/social preview | `app/layout.tsx` (`metadata` object) |
-
-## 3. Where to add project images/screenshots
-
-1. Drop image files into `public/images/` (e.g. `public/images/dashboard.png`).
-2. Reference them in `components/Projects.tsx`, e.g.:
-   ```tsx
-   import Image from "next/image";
-   <Image src="/images/dashboard.png" alt="Dashboard screenshot" width={800} height={500} className="rounded-xl border border-line" />
-   ```
-3. A good spot is inside the case-study grid in the featured project card, or the dial preview panel next to the project description.
-
-## 4. How to add your GitHub later
-
-- Add a GitHub button next to the LinkedIn button in `components/Hero.tsx` (copy the LinkedIn `<a>` block, swap the icon path/text for GitHub, and set `href` to your profile URL).
-- You can also link individual repos from each project card in `components/Projects.tsx`.
-
-## 5. How to deploy it online
-
-**Easiest: Vercel (made by the Next.js team, free tier)**
-1. Push this project to a GitHub repository.
-2. Go to [vercel.com](https://vercel.com), sign in with GitHub, and click "New Project."
-3. Select your repo — Vercel auto-detects Next.js and deploys it. You'll get a live URL in a couple of minutes.
-4. Once you have a custom domain, set `NEXT_PUBLIC_SITE_URL` in the host's
-   environment variables. `app/site.ts` falls back to the Vercel URL, and
-   metadata, `robots.txt` and `sitemap.xml` all follow from it.
-
-Other options: Netlify, Cloudflare Pages, or any Node-compatible host.
-
-## 6. Contact details (no form)
-
-The contact section links straight to email and LinkedIn — there is no form to
-submit. A form needs a server running somewhere to turn a submission into an
-email; a plain `mailto:` link needs nothing, cannot silently fail, and opens the
-visitor's own mail app with the address filled in.
-
-- Email: aljabrialzahra1@gmail.com
-- LinkedIn: linkedin.com/in/alzahra-al-jabri-0164ab416
-
-Both are defined at the top of `components/Contact.tsx`.
-
-This site is frontend-only — there is no server to run or deploy.
-
-## Files & components created
+## Project structure
 
 ```
 app/
-  layout.tsx        → root layout, fonts, SEO/Open Graph metadata
-  page.tsx           → assembles all sections
-  globals.css         → design tokens, base styles, reduced-motion & focus states
-  favicon.svg         → dial-motif favicon
+  layout.tsx        root layout, fonts and SEO metadata
+  page.tsx          assembles the sections
+  globals.css       base typography, focus and motion styles
+  site.ts           canonical site URL
+  robots.ts         robots.txt
+  sitemap.ts        sitemap.xml
 components/
-  Navbar.tsx           → responsive nav with mobile menu
-  Hero.tsx             → landing section
-  About.tsx            → About Me
-  Skills.tsx           → categorized skill cards + strengths
-  Projects.tsx         → featured project (with expandable case study) + Nasek card
-  Timeline.tsx         → "Professional Journey" timeline
-  Achievements.tsx     → achievements grid
-  Contact.tsx          → contact details + form
-  Footer.tsx           → footer
-  CredibilityDial.tsx  → the signature dial visual (reused across the site)
-  Reveal.tsx           → scroll-reveal animation wrapper
-tailwind.config.ts      → color/type/animation design tokens
+  Navbar.tsx        fixed header, active-section nav, mobile menu
+  Hero.tsx          landing section
+  About.tsx         About
+  Skills.tsx        skill categories
+  Projects.tsx      featured project and Nasek, with case studies
+  Timeline.tsx      professional journey
+  Achievements.tsx  achievements grid
+  Contact.tsx       contact details
+  Footer.tsx        footer
+  Logo.tsx          the AZ monogram, shared by the nav and footer
+  Reveal.tsx        scroll-reveal wrapper
+public/             favicon, logo, share image and project screenshots
+tailwind.config.ts  colour, type and animation tokens
 ```
 
-## Design notes
+## Editing the content
 
-- **Palette:** graphite/ink base (`#0B0F14`) with a signal-gold accent (`#E3B341`) and a verified-teal secondary (`#3FB8AF`) — chosen to evoke trust/verification rather than a generic neon "hacker" theme.
-- **Type:** Space Grotesk (display), Inter (body), JetBrains Mono (labels/data) — loaded via `next/font/google`, no extra setup needed.
-- **Motion:** subtle fade-up on load, scroll-reveal on each section, and a slow ambient sweep behind the hero. Respects `prefers-reduced-motion`.
-- No fabricated statistics, employers, or skill percentages — every line of content traces back to your CV.
+Every section's text lives in its own component as plain data or JSX — there
+is no CMS. Skills, timeline entries and achievements are arrays at the top of
+their files; the rest is written inline. Page title and share metadata are in
+the `metadata` object in `app/layout.tsx`.
+
+## Deployment
+
+Deployed on Vercel from the `main` branch. Vercel detects Next.js
+automatically, so no build configuration is required beyond setting
+`NEXT_PUBLIC_SITE_URL` once a custom domain is live.
+
+## Contact
+
+- Email: aljabrialzahra1@gmail.com
+- LinkedIn: https://linkedin.com/in/alzahra-al-jabri-0164ab416
+
+---
+
+© 2026 Alzahra Al Jabri. All rights reserved.

@@ -37,10 +37,12 @@ export default function Achievements() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2">
           {ACHIEVEMENTS.map((a, i) => (
             <Reveal key={a.title} delay={i * 80} className="h-full">
-              <div className="flex h-full gap-5 rounded-2xl border border-line bg-surface p-7 transition-colors hover:border-accent/30">
-                <span className="font-display text-2xl text-accent">{a.mark}</span>
+              <div className="flex h-full gap-5 rounded-2xl border border-line bg-surface p-6 transition-colors duration-300 hover:border-accent/40 sm:p-7">
+                <span aria-hidden="true" className="font-glyph text-2xl leading-none text-accent">
+                  {a.mark}
+                </span>
                 <div>
-                  <h3 className="font-display text-lg font-medium text-text">
+                  <h3 className="font-display text-lg font-semibold text-text">
                     {a.title}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-text-muted">

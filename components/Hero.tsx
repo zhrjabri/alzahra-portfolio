@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden pt-24"
+      className="relative flex min-h-[100svh] items-center overflow-hidden pb-16 pt-24"
     >
       {/* ambient background: the AZ cipher blown up and cropped by the right edge */}
       <div
@@ -33,8 +33,11 @@ export default function Hero() {
         </p>
 
         <h1
-          className="animate-fade-up font-display text-5xl font-semibold leading-[1.05] tracking-tight text-text opacity-0 sm:text-6xl lg:text-7xl"
-          style={{ animationDelay: "160ms" }}
+          className="animate-fade-up font-display font-semibold leading-[1.02] tracking-[-0.02em] text-text opacity-0"
+          style={{
+            animationDelay: "160ms",
+            fontSize: "clamp(2.75rem, 9.5vw, 5.5rem)",
+          }}
         >
           Alzahra Ali
           <br />
@@ -42,15 +45,16 @@ export default function Hero() {
         </h1>
 
         <p
-          className="animate-fade-up mt-6 max-w-xl text-lg text-text-muted opacity-0 sm:text-xl"
+          className="animate-fade-up mt-7 max-w-[40ch] text-lg text-text-muted opacity-0 sm:text-xl"
           style={{ animationDelay: "260ms" }}
         >
-          <span className="text-accent">Artificial Intelligence Graduate</span>{" "}
-          &middot; AI &amp; Software Developer
+          <span className="text-accent">Artificial Intelligence Graduate</span>
+          {" · "}
+          <span className="whitespace-nowrap">AI &amp; Software Developer</span>
         </p>
 
         <p
-          className="animate-fade-up mt-4 max-w-lg text-base text-text-muted/90 opacity-0"
+          className="animate-fade-up mt-4 max-w-[52ch] text-base text-text-muted opacity-0"
           style={{ animationDelay: "340ms" }}
         >
           Building intelligent, practical solutions with AI, Python, and
@@ -58,18 +62,18 @@ export default function Hero() {
         </p>
 
         <div
-          className="animate-fade-up mt-10 flex flex-wrap items-center gap-4 opacity-0"
+          className="animate-fade-up mt-11 flex flex-wrap items-center gap-x-4 gap-y-3 opacity-0"
           style={{ animationDelay: "440ms" }}
         >
           <a
             href="#projects"
-            className="rounded-full bg-accent px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-[1.03] hover:shadow-[0_0_24px_rgba(27,58,107,0.30)]"
+            className="rounded-full bg-accent px-7 py-3.5 text-sm font-medium text-ink transition-colors duration-200 hover:bg-accent-dim"
           >
             View My Projects
           </a>
           <a
             href="#contact"
-            className="rounded-full border border-line px-6 py-3 text-sm font-medium text-text transition-colors hover:border-accent/50 hover:text-accent"
+            className="rounded-full border border-accent/35 px-7 py-3.5 text-sm font-medium text-accent transition-colors duration-200 hover:border-accent/70 hover:bg-accent/5"
           >
             Contact Me
           </a>
@@ -77,12 +81,14 @@ export default function Hero() {
             href="https://linkedin.com/in/alzahra-al-jabri-0164ab416"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-full border border-line px-5 py-3 text-sm font-medium text-text-muted transition-colors hover:border-teal/50 hover:text-teal"
+            className="group ml-1 inline-flex items-center gap-2 py-3.5 text-sm font-medium text-text-muted transition-colors duration-200 hover:text-accent"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z" />
             </svg>
-            LinkedIn
+            <span className="border-b border-transparent transition-colors duration-200 group-hover:border-accent/40">
+              LinkedIn
+            </span>
           </a>
         </div>
       </div>

@@ -15,7 +15,7 @@ const DETAILS = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative border-t border-line py-24">
+    <section id="contact" className="relative border-t border-line py-28">
       <div className="mx-auto max-w-6xl px-6">
         <Reveal>
           <p className="section-label mb-4">06 — Contact</p>
@@ -31,7 +31,7 @@ export default function Contact() {
                 key={d.label}
                 className="flex flex-col gap-1 border-b border-line py-5 sm:flex-row sm:items-baseline sm:gap-8"
               >
-                <p className="font-mono text-xs uppercase tracking-wider text-text-faint sm:w-24 sm:shrink-0">
+                <p className="font-mono text-xs uppercase tracking-[0.12em] text-text-faint sm:w-24 sm:shrink-0">
                   {d.label}
                 </p>
                 {d.href ? (
@@ -39,7 +39,7 @@ export default function Contact() {
                     href={d.href}
                     target={d.href.startsWith("http") ? "_blank" : undefined}
                     rel="noopener noreferrer"
-                    className="break-words text-base text-text transition-colors hover:text-accent"
+                    className="-my-1.5 inline-block break-words py-1.5 text-base text-text underline decoration-line decoration-1 underline-offset-[6px] transition-colors duration-200 hover:text-accent hover:decoration-accent/60"
                   >
                     {d.value}
                   </a>

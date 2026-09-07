@@ -48,20 +48,20 @@ export default function Skills() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {CATEGORIES.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 70}>
-              <div className="group h-full rounded-2xl border border-line bg-surface p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:bg-surface-2">
-                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-line text-lg text-accent transition-colors group-hover:border-accent/50">
+              <div className="group h-full rounded-2xl border border-line bg-surface p-6 transition-colors duration-300 hover:border-accent/40 hover:bg-surface-2 sm:p-7">
+                <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-lg border border-line font-glyph text-lg text-accent transition-colors group-hover:border-accent/50">
                   {cat.icon}
                 </div>
-                <h3 className="font-display text-lg font-medium text-text">
+                <h3 className="font-display text-lg font-semibold text-text">
                   {cat.title}
                 </h3>
                 <ul className="mt-4 space-y-2">
                   {cat.items.map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-2 text-sm text-text-muted"
+                      className="flex items-start gap-2.5 text-sm text-text-muted"
                     >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-teal" />
+                      <span className="mt-[0.6em] h-1 w-1 shrink-0 rounded-full bg-teal" />
                       {item}
                     </li>
                   ))}

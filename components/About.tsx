@@ -12,7 +12,7 @@ export default function About() {
           <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
             An AI graduate who ships working software, not just models.
           </h2>
-          <div className="mt-6 space-y-5 text-base leading-relaxed text-text-muted">
+          <div className="mt-7 max-w-[64ch] space-y-5 text-base text-text-muted">
             <p>
               I&apos;m an Artificial Intelligence graduate with hands-on
               experience building AI-powered applications, working with
