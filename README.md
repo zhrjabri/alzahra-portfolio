@@ -1,76 +1,140 @@
 # Alzahra Al Jabri Portfolio
 
-Personal portfolio of Alzahra Ali Nasser Al Jabri — Artificial Intelligence
-graduate and AI & Software Developer based in the Sultanate of Oman. A
-single-page site presenting her background, skills, featured projects,
-professional journey, achievements and contact details.
+Portfolio of Alzahra Al Jabri — AI graduate and software developer based in the
+Sultanate of Oman. The site is designed as an editorial publication about her
+work ("Folio"): an editorial homepage and a text-led case study for each
+project.
 
 **Live site:** https://alzahra-portfolio.vercel.app/
 
-## Sections
+## Pages
 
-| Section | Contents |
+| Route | Contents |
 |---|---|
-| Hero | Name, title and the primary calls to action |
-| About | Background and the kind of work she is looking for |
-| Skills | Six categories: AI & machine learning, Python, APIs, data, application development, automation |
-| Projects | AI-Powered Fake News Detection Platform (graduation project) and "Nasek", each with an expandable case study |
-| Journey | Dated timeline from secondary education through to the AI degree |
-| Achievements | First place nationally, registered software work, degree, graduation project |
-| Contact | Email, LinkedIn and location |
+| `/` | Opening statement, "In this issue" contents, the three features (TIMORA as the lead), technology index, About, Journey and Contact |
+| `/work/timora` | Case study: TIMORA — lead project |
+| `/work/nasek` | Case study: NASEK |
+| `/work/fake-news-detection` | Case study: AI-Powered Fake News Detection Platform |
+
+Each case study has an at-a-glance facts row, an "On this page" contents list
+that tracks the section being read, the question, what was built, text-only
+figures, how it's built, how it's checked (where verified), the outcome and,
+for TIMORA and NASEK, the design and engineering decisions in the margin.
 
 ## Featured projects
 
-**AI-Powered Fake News Detection Platform** — graduation project. A full-stack
-application that analyses Arabic and English news content and scores its
-credibility from 0–100, cross-referencing claims against trusted sources via
-the OpenAI and Google Search APIs.
+1. **TIMORA** — a web app for the things that repeat every few weeks, months or
+   years. Designed and built solo. Live at https://timora-five.vercel.app/
+2. **NASEK** — an Omani platform that brings Hajj and Umrah campaigns together
+   in one place. 1st place in Oman at Ibda’at Shabab (smartphone applications),
+   stage 5 of INJAZ Oman, and registered intellectual property (Reg. No.
+   CPRG0003420354). Live at https://nasek.vercel.app/
+3. **AI-Powered Fake News Detection Platform** — graduation project that scores
+   Arabic and English news for credibility from 0 to 100 using the OpenAI and
+   Google Search APIs. No public live demo is currently available.
 
-**"Nasek" — Hajj & Umrah Booking Platform** — live at
-https://nasek.vercel.app/. A platform bringing Omani Hajj and Umrah campaigns
-into one place. Registered with the Intellectual Property Department,
-Ministry of Commerce and Industry, Oman (Reg. No. CPRG0003420354), and first
-place nationally in the Ibda'at competition.
+Projects are presented without screenshots, by design.
+
+## Design system — Folio
+
+- **Colour** (light edition only): paper `#FFFFFF`, vellum `#F3F1EE`, ink
+  `#121212`, ink-2 `#3A3633`, stone `#5E5A57`, hairline `#DCD7D2`, plum
+  `#6B2740` (the single accent), rose `#D9B8C3` (logo on dark grounds only).
+  Every text colour meets WCAG AA; the lowest pair is stone on vellum, 6.1:1.
+- **Type**: Newsreader (headings and narrative, variable with optical sizes)
+  and Hanken Grotesk (navigation, labels, facts), both through
+  `next/font/google`. Newsreader uses a metric-matched Georgia fallback declared
+  in `app/globals.css`, because Next 14 ships no fallback metrics for it.
+- **Structure**: ink rules and hairlines, a margin column for labels and notes,
+  roman numerals only where order matters. No cards, shadows, radii, gradients
+  or decorative imagery.
+- Tokens live in `tailwind.config.ts`; editorial components in the
+  `@layer components` block of `app/globals.css`.
+
+## Brand
+
+The mark ("Byline") is a lowercase single-storey *a* whose stem curves into a
+tapering baseline rule. Its geometry is defined once in `lib/brand.ts` and
+drawn by `components/site/LogoMark.tsx`:
+
+| Drawing | Use |
+|---|---|
+| A · Byline (`primary`) | Primary mark, 32px and up |
+| A · Byline (`compact`) | Heavier drawing for 32px and below |
+| B · Italic Byline (`italic`) | With the italic short wordmark *alzahra* |
+| C · Plate (`plate`) | Favicon, app icons and social cards |
+
+Plum is used on light grounds and rose on dark ones. Clear space around the
+mark is a quarter of its height. Never mirror, rotate or outline it.
+
+Exported files are in `brand/` (SVG with outlined text, plus PNG in
+`brand/png/`): primary logo, horizontal wordmark, short wordmark, the three
+marks and the plate — each in light, dark, black and white versions (plates in
+plum, rose, black and white). Site icons (`favicon.svg`, `favicon.ico`,
+`apple-touch-icon.png`, `icon-192.png`, `icon-512.png`) and social cards
+(`og.png`, `og/*.png`) are in `public/`.
+
+### Regenerating the brand kit
+
+Everything in `brand/`, the site icons and the social cards is generated from
+`lib/brand.ts` and `scripts/og-image.html` by the scripts in `scripts/brand/`.
+Change the geometry or the card template there, never the exported files.
+
+The tools are not dependencies of the site. Install them once:
+
+```bash
+python -m pip install -r scripts/brand/requirements.txt   # fonttools, uharfbuzz, pillow
+npm install --no-save playwright
+npx playwright install chromium   # or set PLAYWRIGHT_CHANNEL=chrome to use Google Chrome
+```
+
+Then, from the repository root:
+
+```bash
+python scripts/brand/export_svg.py   # brand/*.svg and public/favicon.svg
+node scripts/brand/rasterize.cjs     # brand/png/, favicon.ico, app icons, social cards
+```
+
+To check that the committed files are reproducible, export into a scratch
+folder and compare (SVGs must match byte for byte, rasters pixel by pixel):
+
+```bash
+python scripts/brand/export_svg.py --out ../brand-check
+node scripts/brand/rasterize.cjs --out ../brand-check
+python scripts/brand/compare.py ../brand-check
+```
+
+The wordmarks are outlined from Newsreader, which `export_svg.py` downloads
+from Google Fonts into the system temp folder, and the social cards load the
+site fonts from Google Fonts, so both steps need a network connection. If
+Google publishes a new version of Newsreader, the outlines may change slightly;
+review the result before committing.
 
 ## Tech stack
 
 - **Next.js 14** (App Router) with React 18
 - **TypeScript**
-- **Tailwind CSS** with a custom token layer for colour and type
-- **next/font/google** — Cormorant Garamond (display and body) and JetBrains
-  Mono (labels and data)
+- **Tailwind CSS** with the Folio token layer
+- **next/font/google** — Newsreader and Hanken Grotesk
 - Deployed on **Vercel**
 
-The site is frontend-only. There is no server, database or API to run.
+The site is static and frontend-only: no server, database or API.
 
-## Features
+## Accessibility and responsiveness
 
-- Fixed header with a scroll-aware treatment and an active-section indicator
-- Expandable case studies for both projects
-- Scroll-reveal transitions on each section
-- SEO metadata via the Next.js Metadata API — title, description, canonical
-  URL, Open Graph and Twitter card
-- Generated `robots.txt` and `sitemap.xml`, both driven by the same site URL
-
-### Responsive design
-
-- Laid out for phone, tablet and desktop, tested from 360px upward
-- Fluid display type via `clamp()`, so headings scale with the viewport
-  without overflowing narrow screens
-- Navigation collapses to a menu below 1024px, with body-scroll locking and
-  Escape-to-close
-- Line lengths capped in `ch` units to keep body copy readable at every width
-
-### Accessibility
-
-- All text meets WCAG AA contrast on every surface
-- Skip-to-content link and a `<main>` landmark
-- Visible keyboard focus on every interactive element
-- Collapsed case studies stay out of the tab order
-- Anchor links account for the fixed header, so headings are never hidden
-  underneath it
-- `prefers-reduced-motion` is respected; content is never left hidden
-- Touch targets sized for comfortable tapping
+- English only; `<html lang="en">`
+- Skip link, landmark regions, one `h1` per page and sequential headings
+- Visible 2px plum focus ring on every interactive element
+- Accessible mobile menu: `aria-expanded`, Escape to close with focus
+  returned to the button, scroll lock while open
+- External links open in a new tab with `rel="noopener noreferrer"`, a visible
+  ↗ and screen-reader text saying so
+- Primary controls (menu, navigation, live-site links, case-study links and
+  contents) have touch areas of at least 44px; every other target meets the
+  WCAG 2.2 minimum of 24px. `prefers-reduced-motion` is respected, and content
+  is never hidden waiting for an animation
+- Laid out and tested at 360, 390, 768, 1024 and 1440px with no horizontal
+  overflow; checked with axe (WCAG 2.2 AA)
 
 ## Running locally
 
@@ -92,13 +156,13 @@ Open http://localhost:3000.
 | `npm run dev` | Start the development server with hot reload |
 | `npm run build` | Create the optimised production build |
 | `npm run start` | Serve the production build locally |
-| `npm run lint` | Run ESLint |
+| `npm run lint` | Run ESLint (`next/core-web-vitals`) |
 | `npx tsc --noEmit` | Type-check without emitting files |
 
 ### Environment
 
-One optional variable, used for canonical metadata, share previews,
-`robots.txt` and `sitemap.xml`:
+One optional variable, used for canonical URLs, share previews, `robots.txt`
+and `sitemap.xml`:
 
 ```
 NEXT_PUBLIC_SITE_URL=https://alzahra-portfolio.vercel.app
@@ -112,45 +176,47 @@ back to the deployed URL when it is not set.
 
 ```
 app/
-  layout.tsx        root layout, fonts and SEO metadata
-  page.tsx          assembles the sections
-  globals.css       base typography, focus and motion styles
-  site.ts           canonical site URL
-  robots.ts         robots.txt
-  sitemap.ts        sitemap.xml
+  layout.tsx            fonts, metadata, masthead and footer
+  page.tsx              editorial homepage
+  work/[slug]/page.tsx  case-study pages (static, one per project)
+  not-found.tsx         404
+  globals.css           Folio base styles and editorial components
+  manifest.ts           web app manifest
+  robots.ts, sitemap.ts robots.txt and sitemap.xml
+  site.ts               canonical site URL
+content/
+  projects.ts           the three projects — single source of truth
+  profile.ts            name, contact, About, Journey, technology index
 components/
-  Navbar.tsx        fixed header, active-section nav, mobile menu
-  Hero.tsx          landing section
-  About.tsx         About
-  Skills.tsx        skill categories
-  Projects.tsx      featured project and Nasek, with case studies
-  Timeline.tsx      professional journey
-  Achievements.tsx  achievements grid
-  Contact.tsx       contact details
-  Footer.tsx        footer
-  Logo.tsx          the AZ monogram, shared by the nav and footer
-  Reveal.tsx        scroll-reveal wrapper
-public/             favicon, logo, share image and project screenshots
-tailwind.config.ts  colour, type and animation tokens
+  site/                 Masthead, Footer, LogoMark
+  home/                 Opening, Features, Sections (index, about, journey, contact)
+  case/                 CaseStudy template, OnThisPage
+  editorial/            Facts, LiveLink, TextFigure
+lib/brand.ts            logo geometry and brand colours
+brand/                  exported logo files (SVG + PNG)
+public/                 favicons, app icons, social cards
+scripts/
+  og-image.html         source for the social cards
+  brand/                brand-kit export: export_svg.py, rasterize.cjs, compare.py
 ```
 
 ## Editing the content
 
-Every section's text lives in its own component as plain data or JSX — there
-is no CMS. Skills, timeline entries and achievements are arrays at the top of
-their files; the rest is written inline. Page title and share metadata are in
-the `metadata` object in `app/layout.tsx`.
+All copy lives in `content/projects.ts` and `content/profile.ts`. Only add
+facts that are confirmed; dates appear only where they are known. Page titles
+and share metadata come from `app/layout.tsx` and each project's
+`metaDescription`.
 
 ## Deployment
 
 Deployed on Vercel from the `main` branch. Vercel detects Next.js
-automatically, so no build configuration is required beyond setting
-`NEXT_PUBLIC_SITE_URL` once a custom domain is live.
+automatically; set `NEXT_PUBLIC_SITE_URL` once a custom domain is live.
 
 ## Contact
 
 - Email: aljabrialzahra1@gmail.com
 - LinkedIn: https://linkedin.com/in/alzahra-al-jabri-0164ab416
+- GitHub: https://github.com/zhrjabri
 
 ---
 

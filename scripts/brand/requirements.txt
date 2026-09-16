@@ -1,0 +1,4 @@
+# Python tools for the brand kit (scripts/brand/). Not needed to run the site.
+fonttools==4.65.0
+uharfbuzz==0.56.1
+pillow==12.2.0

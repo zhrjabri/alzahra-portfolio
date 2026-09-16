@@ -1,61 +1,71 @@
-<!doctype html><html><head><meta charset="utf-8">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Social preview source</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Hanken+Grotesk:wght@500;600&display=block" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  html,body{width:1200px;height:630px;overflow:hidden}
-  body{background:#F7F5F0;position:relative;font-family:Inter,system-ui}
-  .fade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(27,58,107,.08),transparent 60%)}
-  .lock{position:absolute;left:80px;top:60px;color:#1B3A6B}
-  .ghost{position:absolute;right:-150px;top:50%;transform:translateY(-50%);width:800px}
-  .ghost svg{display:block;width:100%;height:auto}
-  .copy{position:absolute;left:80px;top:54%;transform:translateY(-50%);max-width:706px}
-  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:500;
-           letter-spacing:.28em;text-transform:uppercase;color:#1B3A6B;margin-bottom:22px}
-  h1{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:76px;line-height:1.04;
-     letter-spacing:-.025em;color:#17202B}
-  .role{font-size:24px;white-space:nowrap;line-height:1.4;margin-top:26px;color:#556170}
-  .role b{font-weight:500;color:#1B3A6B}
-  .tag{font-size:19px;color:#8A94A2;margin-top:14px}
-  .foot{position:absolute;left:80px;bottom:56px;font-family:'JetBrains Mono',monospace;
-        font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:#8A94A2}
-  .bar{position:absolute;left:0;bottom:0;width:100%;height:6px;
-       background:linear-gradient(90deg,#1B3A6B 0%,#1B3A6B 34%,#157F77 34%,#157F77 46%,#E0DAD0 46%)}
-</style></head><body>
-<div class="fade"></div>
-
-<svg class="lock" width="147" height="88" viewBox="0 0 200 120" fill="none"
-     stroke="currentColor" stroke-width="4.2" stroke-linejoin="miter" stroke-miterlimit="8">
-  <path d="M25 102 L67 18 L109 102"/>
-  <path d="M43 70 H91"/>
-  <path d="M77 18 H159 L95 102 H177"/>
-</svg>
-
-<div class="ghost">
-  <svg viewBox="0 0 200 120" fill="none" stroke="#1B3A6B" stroke-width="1.2"
-       stroke-linejoin="miter" stroke-miterlimit="8" style="opacity:.13">
-    <path d="M25 102 L67 18 L109 102"/>
-    <path d="M43 70 H91"/>
-    <path d="M77 18 H159 L95 102 H177"/>
-  </svg>
+  html,body{width:1200px;height:630px;overflow:hidden;background:#FFFFFF;color:#121212}
+  body{position:relative;font-family:'Newsreader',Georgia,serif}
+  .frame{position:absolute;inset:64px 76px 60px;display:grid;grid-template-rows:auto 1fr auto}
+  .top{display:flex;justify-content:space-between;align-items:center;padding-bottom:22px;border-bottom:1.5px solid #121212}
+  .brand{display:flex;align-items:center;gap:18px;font-size:34px;letter-spacing:-.005em}
+  .brand svg{width:56px;height:56px;display:block}
+  .kicker{font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:17px;letter-spacing:.14em;text-transform:uppercase;color:#6B2740}
+  h1{align-self:center;font-weight:400;font-size:84px;line-height:.98;letter-spacing:-.03em;max-width:1000px}
+  h1 em{color:#6B2740}
+  .bot{display:flex;justify-content:space-between;align-items:end;gap:24px;padding-top:20px;border-top:1px solid #DCD7D2;
+       font-family:'Hanken Grotesk',sans-serif;font-weight:500;font-size:20px;color:#5E5A57}
+  .bot b{font-weight:600;color:#121212}
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="top">
+    <div class="brand">
+      <!-- C · Plate, drawn from lib/brand.ts (PLATE_KNOCKOUT) -->
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <mask id="k" maskUnits="userSpaceOnUse" x="0" y="0" width="48" height="48">
+          <rect width="48" height="48" fill="#fff"/>
+          <ellipse cx="17" cy="24.5" rx="8" ry="9.4" fill="none" stroke="#000" stroke-width="4.8"/>
+          <path d="M25 16V26.8A7.4 7.4 0 0 0 32.4 34.2" fill="none" stroke="#000" stroke-width="5.4"/>
+          <path d="M22.3 16H27.7V13.2Z" fill="#000"/>
+          <path d="M31.8 31.5L48 33V35.4L31.8 36.9Z" fill="#000"/>
+        </mask>
+        <rect width="48" height="48" fill="#6B2740" mask="url(#k)"/>
+      </svg>
+      Alzahra Al Jabri
+    </div>
+    <div class="kicker" id="kicker">Software developer · Oman</div>
+  </div>
+  <h1 id="title">I build software that turns <em>uncertain decisions</em> into clear answers.</h1>
+  <div class="bot"><span id="foot">AI graduate · Next.js · TypeScript · Supabase</span><span id="work"><b>TIMORA</b> · NASEK · Fake News Detection</span></div>
 </div>
-
-
-<div class="copy">
-  <div class="eyebrow">Sultanate of Oman</div>
-  <h1>Alzahra Ali<br>Nasser Al Jabri</h1>
-  <div class="role"><b>Artificial Intelligence Graduate</b> &middot; AI &amp; Software Developer</div>
-  <div class="tag">Building intelligent, practical solutions with AI, Python,<br>and modern software technologies.</div>
-</div>
-
-<div class="foot">AI &nbsp;&middot;&nbsp; Python &nbsp;&middot;&nbsp; API-driven software</div>
-<div class="bar"></div>
-</body></html>
+<script>
+  // One template, four cards: open with #timora, #nasek or #fake-news-detection.
+  var cards = {
+    "timora": ["Case study · i", "TIMORA: a web app for the things that repeat every few weeks, months or years.", "Designed and built solo · Next.js · Supabase"],
+    "nasek": ["Case study · ii", "NASEK: Hajj and Umrah campaigns in Oman, <em>in one place</em>.", "1st place in Oman, Ibda’at Shabab · React · Supabase"],
+    "fake-news-detection": ["Case study · iii", "AI-Powered Fake News Detection Platform", "Arabic and English news, scored 0–100 · OpenAI API · Google Search API"]
+  };
+  var card = cards[location.hash.slice(1)];
+  if (card) {
+    document.getElementById("kicker").textContent = card[0];
+    document.getElementById("title").innerHTML = card[1];
+    document.getElementById("title").style.fontSize = "72px";
+    document.getElementById("foot").textContent = card[2];
+    document.getElementById("work").textContent = "alzahra-portfolio.vercel.app";
+  }
+</script>
+</body>
+</html>
 <!--
-  Source for public/og.png (1200x630 social share card).
-  Regenerate after changing the name, role, or tagline:
-
-  chrome --headless --disable-gpu --hide-scrollbars --window-size=1200,630 \
-         --virtual-time-budget=8000 \
-         --screenshot=public/og.png scripts/og-image.html
+  Source for the 1200x630 social cards. Render each at 1200x630:
+    public/og.png                      scripts/og-image.html
+    public/og/timora.png               scripts/og-image.html#timora
+    public/og/nasek.png                scripts/og-image.html#nasek
+    public/og/fake-news-detection.png  scripts/og-image.html#fake-news-detection
+  e.g. with Playwright or: chrome --headless --window-size=1200,630 --screenshot=...
 -->

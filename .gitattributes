@@ -1,0 +1,4 @@
+# Generated brand SVGs keep LF endings on every platform, so a fresh export
+# compares byte for byte (scripts/brand/compare.py).
+brand/*.svg text eol=lf
+public/favicon.svg text eol=lf
