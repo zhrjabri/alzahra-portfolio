@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import LiveLink from "@/components/editorial/LiveLink";
 import TextFigure from "@/components/editorial/TextFigure";
+import { ArrowLeft, ArrowRight } from "@/components/icons";
 import type { Project } from "@/content/projects";
 import { PROJECTS } from "@/content/projects";
 import OnThisPage, { type TocItem } from "./OnThisPage";
@@ -48,14 +49,15 @@ export default function CaseStudy({ project }: { project: Project }) {
     <article aria-labelledby="case-title">
       <div className="running-head">
         <Link href="/#work">
-          <span aria-hidden="true">←&nbsp;</span>All work
+          <ArrowLeft className="mr-2" />
+          All work
         </Link>
         <span className="hidden min-h-[44px] items-center sm:inline-flex">
           Feature {project.numeral} of iii
         </span>
         <Link href={`/work/${next.slug}`}>
           Next: {next.title}
-          <span aria-hidden="true">&nbsp;→</span>
+          <ArrowRight className="ml-2" />
         </Link>
       </div>
 
@@ -160,8 +162,8 @@ export default function CaseStudy({ project }: { project: Project }) {
           <span className="label block">Next · Feature {next.numeral}</span>
           <span className="feature-title-sm mt-2 block">{next.title}</span>
         </span>
-        <span aria-hidden="true" className="font-ui text-3xl">
-          →
+        <span className="font-ui text-3xl">
+          <ArrowRight />
         </span>
       </Link>
     </article>

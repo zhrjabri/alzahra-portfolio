@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
+import { ArrowRight, ExternalLink } from "@/components/icons";
 import { PROFILE } from "@/content/profile";
 import LogoMark from "./LogoMark";
 
@@ -80,7 +81,8 @@ export default function Masthead() {
                 rel="noopener noreferrer"
                 className="nav-link"
               >
-                GitHub <span aria-hidden="true">&nbsp;↗</span>
+                GitHub
+                <ExternalLink className="ml-2" />
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </li>
@@ -115,8 +117,8 @@ export default function Masthead() {
                   aria-current={l.label === "Work" && onWork ? "page" : undefined}
                 >
                   {l.label}
-                  <span aria-hidden="true" className="font-ui text-base text-stone">
-                    →
+                  <span className="font-ui text-base text-stone">
+                    <ArrowRight />
                   </span>
                 </Link>
               </li>
@@ -125,7 +127,7 @@ export default function Masthead() {
               <a href={PROFILE.github.href} target="_blank" rel="noopener noreferrer">
                 GitHub
                 <span className="font-ui text-base text-stone">
-                  <span aria-hidden="true">↗</span>
+                  <ExternalLink />
                   <span className="sr-only">(opens in a new tab)</span>
                 </span>
               </a>

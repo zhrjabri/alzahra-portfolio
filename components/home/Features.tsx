@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import Facts from "@/components/editorial/Facts";
 import LiveLink from "@/components/editorial/LiveLink";
+import { ArrowRight } from "@/components/icons";
 import type { Project } from "@/content/projects";
 import { PROJECTS } from "@/content/projects";
 
@@ -18,7 +19,7 @@ function CaseStudyLink({ project }: { project: Project }) {
   return (
     <Link href={`/work/${project.slug}`} className="read-more mt-4">
       Read the case study<span className="sr-only">: {project.fullTitle}</span>
-      <span aria-hidden="true">&nbsp;→</span>
+      <ArrowRight className="ml-2" />
     </Link>
   );
 }

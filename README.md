@@ -128,7 +128,7 @@ The site is static and frontend-only: no server, database or API.
 - Accessible mobile menu: `aria-expanded`, Escape to close with focus
   returned to the button, scroll lock while open
 - External links open in a new tab with `rel="noopener noreferrer"`, a visible
-  ↗ and screen-reader text saying so
+  external-link icon and screen-reader text saying so
 - Primary controls (menu, navigation, live-site links, case-study links and
   contents) have touch areas of at least 44px; every other target meets the
   WCAG 2.2 minimum of 24px. `prefers-reduced-motion` is respected, and content
@@ -157,7 +157,15 @@ Open http://localhost:3000.
 | `npm run build` | Create the optimised production build |
 | `npm run start` | Serve the production build locally |
 | `npm run lint` | Run ESLint (`next/core-web-vitals`) |
-| `npx tsc --noEmit` | Type-check without emitting files |
+| `npm run typecheck` | Type-check without emitting files (`tsc --noEmit`) |
+| `npm run check:emoji` | Fail on any emoji or arrow glyph in a source file |
+| `npm run validate` | Type-check, lint, the emoji check and the production build |
+
+The site has no emoji anywhere: arrows and external-link marks are hairline
+SVGs in `components/icons`, never glyphs. `npm run check:emoji` enforces that,
+reporting the file, line and column of anything it finds. It skips
+dependencies, build output, lockfiles and binary assets, and deliberately
+allows editorial punctuation (`—` `–` `’` `“ ”` `·` `…` `©`).
 
 ### Environment
 
@@ -192,10 +200,12 @@ components/
   home/                 Opening, Features, Sections (index, about, journey, contact)
   case/                 CaseStudy template, OnThisPage
   editorial/            Facts, LiveLink, TextFigure
+  icons/                ArrowLeft, ArrowRight, ExternalLink (hairline SVGs)
 lib/brand.ts            logo geometry and brand colours
 brand/                  exported logo files (SVG + PNG)
 public/                 favicons, app icons, social cards
 scripts/
+  check-no-emoji.mjs    fails the build on emoji or arrow glyphs
   og-image.html         source for the social cards
   brand/                brand-kit export: export_svg.py, rasterize.cjs, compare.py
 ```

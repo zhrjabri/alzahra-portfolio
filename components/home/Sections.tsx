@@ -1,3 +1,4 @@
+import { ExternalLink } from "@/components/icons";
 import { ABOUT, CONTACT_HEADING, JOURNEY, PROFILE, TECH_INDEX } from "@/content/profile";
 
 /** A section with its label and heading in the margin column. */
@@ -112,7 +113,7 @@ export function Contact() {
           <span className="label">LinkedIn</span>
           <a href={PROFILE.linkedin.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center">
             {PROFILE.linkedin.display}
-            <span aria-hidden="true">&nbsp;↗</span>
+            <ExternalLink className="ml-2" />
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </li>
@@ -120,7 +121,7 @@ export function Contact() {
           <span className="label">GitHub</span>
           <a href={PROFILE.github.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center">
             {PROFILE.github.display}
-            <span aria-hidden="true">&nbsp;↗</span>
+            <ExternalLink className="ml-2" />
             <span className="sr-only"> (opens in a new tab)</span>
           </a>
         </li>

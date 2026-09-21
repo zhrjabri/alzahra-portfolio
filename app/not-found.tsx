@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { ArrowRight } from "@/components/icons";
+
 // Rendered through the root title template: "Page Not Found | Alzahra Al Jabri Portfolio".
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -15,7 +17,8 @@ export default function NotFound() {
       </h1>
       <p className="deck">The link may be mistyped, or the page may have moved.</p>
       <Link href="/" className="read-more mt-6">
-        Back to the homepage<span aria-hidden="true">&nbsp;→</span>
+        Back to the homepage
+        <ArrowRight className="ml-2" />
       </Link>
     </section>
   );
